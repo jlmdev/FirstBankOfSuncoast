@@ -82,34 +82,127 @@ namespace FirstBankOfSuncoast
 
             // Start while loop to keep running application
             var quitApplication = "n";
+            var screen = "checkingScreen";
+
             while (quitApplication != "y")
             {
-                // Create Checking View
-                Console.Clear();
-                Console.WriteLine("*** Checking ***\n");
-
-                var checkingAccount = new List<Transaction>();
-
-                foreach (var item in GetCheckingTransactions(transactions))
+                // Switch to control view
+                switch (screen)
                 {
-                    checkingAccount.Add(item);
-                    Console.WriteLine(item.LineItem());
+                    case "checkingScreen":
+                        // Create Checking View
+                        Console.Clear();
+                        Console.WriteLine("*** Checking ***\n");
+
+                        var checkingAccount = new List<Transaction>();
+
+                        foreach (var item in GetCheckingTransactions(transactions))
+                        {
+                            checkingAccount.Add(item);
+                            Console.WriteLine(item.LineItem());
+                        }
+
+                        // Prompt for action
+                        Console.WriteLine("What would you like to do?");
+                        Console.WriteLine("(d) Deposit to checking,");
+                        Console.WriteLine("(w) Withdraw from checking,");
+                        Console.WriteLine("(s) Switch to Savings Account");
+                        Console.WriteLine("(q) Quit the program");
+
+                        // Switch for checking options
+                        var checkingOptions = Console.ReadLine();
+                        switch (checkingOptions)
+                        {
+                            case "d":
+                                // TODO: Prompt for Description
+                                // TODO: Prompt for Amount
+                                // TODO: Code Type
+                                // TODO: Code Account
+                                break;
+                            case "w":
+                                // TODO: Prompt for Description
+                                // TODO: Prompt for Amount
+                                // TODO: Code Type
+                                // TODO: Code Account
+                                break;
+                            case "s":
+                                screen = "savingsScreen";
+                                break;
+                            case "q":
+                                quitApplication = "y";
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+
+                    case "savingsScreen":
+                        // Create Savings View
+                        Console.Clear();
+                        Console.WriteLine("*** Savings ***\n");
+
+                        var savingsAccount = new List<Transaction>();
+
+                        foreach (var item in GetSavingsTransactions(transactions))
+                        {
+                            savingsAccount.Add(item);
+                            Console.WriteLine(item.LineItem());
+                        }
+
+                        // Prompt for action
+                        Console.WriteLine("What would you like to do?");
+                        Console.WriteLine("(d) Deposit to savings,");
+                        Console.WriteLine("(w) Withdraw from savings,");
+                        Console.WriteLine("(c) Switch to Checking Account");
+                        Console.WriteLine("(q) Quit the program");
+
+                        // Switch for checking options
+                        var savingsOptions = Console.ReadLine();
+                        switch (savingsOptions)
+                        {
+                            case "d":
+                                // TODO: Prompt for Description
+                                // TODO: Prompt for Amount
+                                // TODO: Code Type
+                                // TODO: Code Account
+                                break;
+                            case "w":
+                                // TODO: Prompt for Description
+                                // TODO: Prompt for Amount
+                                // TODO: Code Type
+                                // TODO: Code Account
+                                break;
+                            case "c":
+                                screen = "checkingScreen";
+                                break;
+                            case "q":
+                                quitApplication = "y";
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    default:
+                        break;
+
                 }
+
+
 
                 // Create Savings View
                 // Console.Clear();
-                Console.WriteLine("*** Savings ***\n");
+                // Console.WriteLine("*** Savings ***\n");
 
-                var savingsAccount = new List<Transaction>();
+                // var savingsAccount = new List<Transaction>();
 
-                foreach (var item in GetSavingsTransactions(transactions))
-                {
-                    savingsAccount.Add(item);
-                    Console.WriteLine(item.LineItem());
-                }
+                // foreach (var item in GetSavingsTransactions(transactions))
+                // {
+                //     savingsAccount.Add(item);
+                //     Console.WriteLine(item.LineItem());
+                // }
                 // REMOVE ME: while loop test
-                Console.Write("Do you want to quit?");
-                quitApplication = Console.ReadLine();
+                // Console.Write("Do you want to quit?");
+                // quitApplication = Console.ReadLine();
             }
 
             // Say Goodbye
