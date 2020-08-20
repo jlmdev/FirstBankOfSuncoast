@@ -80,37 +80,46 @@ namespace FirstBankOfSuncoast
             //     Console.WriteLine(transaction.LineItem());
             // }
 
-            // Create Checking View
-            Console.Clear();
-            Console.WriteLine("*** Checking ***\n");
-
-            var checkingAccount = new List<Transaction>();
-
-            foreach (var item in GetCheckingTransactions(transactions))
+            // Start while loop to keep running application
+            var quitApplication = "n";
+            while (quitApplication != "y")
             {
-                checkingAccount.Add(item);
-                Console.WriteLine(item.LineItem());
+                // Create Checking View
+                Console.Clear();
+                Console.WriteLine("*** Checking ***\n");
+
+                var checkingAccount = new List<Transaction>();
+
+                foreach (var item in GetCheckingTransactions(transactions))
+                {
+                    checkingAccount.Add(item);
+                    Console.WriteLine(item.LineItem());
+                }
+
+                // Create Savings View
+                // Console.Clear();
+                Console.WriteLine("*** Savings ***\n");
+
+                var savingsAccount = new List<Transaction>();
+
+                foreach (var item in GetSavingsTransactions(transactions))
+                {
+                    savingsAccount.Add(item);
+                    Console.WriteLine(item.LineItem());
+                }
+                // REMOVE ME: while loop test
+                Console.Write("Do you want to quit?");
+                quitApplication = Console.ReadLine();
             }
 
-            // Create Savings View
-            // Console.Clear();
-            Console.WriteLine("*** Savings ***\n");
-
-            var savingsAccount = new List<Transaction>();
-
-            foreach (var item in GetSavingsTransactions(transactions))
-            {
-                savingsAccount.Add(item);
-                Console.WriteLine(item.LineItem());
-            }
-
-
+            // Say Goodbye
+            Console.WriteLine("*** Goodbye ***");
 
             // PEDAC
             // TODO: Load or Create File
-            // TODO: Create Checking View
-            // TODO: Create Savings View
-            // TODO: Create Transactions List
+
+
+
         }
     }
 }
