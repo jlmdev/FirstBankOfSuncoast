@@ -30,6 +30,13 @@ namespace FirstBankOfSuncoast
             var checkingTransactions = transactions.Where(transaction => transaction.Account == "Checking");
             return checkingTransactions;
         }
+
+        // Savings Transaction List
+        public static IEnumerable<Transaction> GetSavingsTransactions(List<Transaction> transactions)
+        {
+            var savingsTransactions = transactions.Where(transaction => transaction.Account == "Savings");
+            return savingsTransactions;
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the First Bank of Suncoast");
@@ -85,8 +92,17 @@ namespace FirstBankOfSuncoast
                 Console.WriteLine(item.LineItem());
             }
 
+            // Create Savings View
+            // Console.Clear();
+            Console.WriteLine("*** Savings ***\n");
 
+            var savingsAccount = new List<Transaction>();
 
+            foreach (var item in GetSavingsTransactions(transactions))
+            {
+                savingsAccount.Add(item);
+                Console.WriteLine(item.LineItem());
+            }
 
 
 
