@@ -94,13 +94,26 @@ namespace FirstBankOfSuncoast
                         Console.Clear();
                         Console.WriteLine("*** Checking ***\n");
 
+                        // List checking transactions and calculate balance
                         var checkingAccount = new List<Transaction>();
+                        var checkingBalance = 0.00;
 
                         foreach (var item in GetCheckingTransactions(transactions))
                         {
                             checkingAccount.Add(item);
                             Console.WriteLine(item.LineItem());
+
+                            // Track Checking Account Balance
+                            if (item.Type == "Deposit")
+                            {
+                                checkingBalance += item.Amount;
+                            }
+                            else
+                            {
+                                checkingBalance -= item.Amount;
+                            }
                         }
+                        Console.WriteLine($"** Checking Balance: ${checkingBalance}");
 
                         // Prompt for action
                         Console.WriteLine("What would you like to do?");
