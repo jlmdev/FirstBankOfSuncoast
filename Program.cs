@@ -152,8 +152,10 @@ namespace FirstBankOfSuncoast
 
                                 Console.Write("Amount: ");
 
+                                // Get Checking Withdrawal amount and force positive value
                                 var checkingWithdrawalAmountString = Console.ReadLine();
-                                var checkingWithdrawalAmount = double.Parse(checkingWithdrawalAmountString);
+                                var checkingWithdrawalRawAmount = double.Parse(checkingWithdrawalAmountString);
+                                var checkingWithdrawalPositiveAmount = Math.Abs(checkingWithdrawalRawAmount);
 
                                 var checkingWithdrawalType = "Withdrawal";
                                 var checkingWithdrawalAccount = "Checking";
@@ -161,7 +163,7 @@ namespace FirstBankOfSuncoast
                                 var checkingAccountWithdrawal = new Transaction()
                                 {
                                     Description = checkingWithdrawalDescription,
-                                    Amount = checkingWithdrawalAmount,
+                                    Amount = checkingWithdrawalPositiveAmount,
                                     Type = checkingWithdrawalType,
                                     Account = checkingWithdrawalAccount,
                                 };
