@@ -215,8 +215,10 @@ namespace FirstBankOfSuncoast
 
                                 Console.Write("Amount: ");
 
+                                // Get Savings Deposit Amount and force positive value
                                 var savingsDepositAmountString = Console.ReadLine();
-                                var savingsDepositAmount = double.Parse(savingsDepositAmountString);
+                                var savingsDepositRawAmount = double.Parse(savingsDepositAmountString);
+                                var savingsDepositPositiveAmount = Math.Abs(savingsDepositRawAmount);
 
                                 var savingsDepositType = "Deposit";
                                 var savingsDepositAccount = "Savings";
@@ -224,7 +226,7 @@ namespace FirstBankOfSuncoast
                                 var savingsAccountDeposit = new Transaction()
                                 {
                                     Description = savingsDepositDescription,
-                                    Amount = savingsDepositAmount,
+                                    Amount = savingsDepositPositiveAmount,
                                     Type = savingsDepositType,
                                     Account = savingsDepositAccount,
                                 };
@@ -241,6 +243,7 @@ namespace FirstBankOfSuncoast
 
                                 Console.Write("Amount: ");
 
+                                // Get 
                                 var savingsWithdrawalAmountString = Console.ReadLine();
                                 var savingsWithdrawalAmount = double.Parse(savingsWithdrawalAmountString);
 
