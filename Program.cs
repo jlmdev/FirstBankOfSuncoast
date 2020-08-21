@@ -63,8 +63,8 @@ namespace FirstBankOfSuncoast
             // Create a CSV reader to parse the stream into CSV format
             var csvReader = new CsvReader(fileReader, CultureInfo.InvariantCulture);
 
-            // Tell the CSV reader not to interpret the first row as a header
-            csvReader.Configuration.HasHeaderRecord = false;
+            // Tell the CSV reader to interpret the first row as a header
+            csvReader.Configuration.HasHeaderRecord = true;
 
             // Get the records from the CSV reader
             var transactions = csvReader.GetRecords<Transaction>().ToList();
@@ -183,6 +183,20 @@ namespace FirstBankOfSuncoast
                                 };
 
                                 transactions.Add(checkingAccountDeposit);
+
+                                // Create a stream for writing information into a file
+                                var fileWriter = new StreamWriter("transactions.csv");
+
+                                // Create an object that can write CSV to the filewriter
+                                var csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
+
+                                // Ask our csvWriter to write out our list of numbers
+                                csvWriter.WriteRecords(transactions);
+
+                                // Tell the file we are done
+                                fileWriter.Close();
+
+
 
                                 break;
                             case "w":
