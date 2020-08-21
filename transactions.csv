@@ -6,3 +6,6 @@ Oh No,200,Withdrawal,Checking
 Lottery,500,Deposit,Savings
 TRANSACTION CANCELLED: OVERDRAW,0,Withdrawal,Savings
 smallWithdraw,100,Withdrawal,Savings
+smallDep,50,Deposit,Checking
+smallw,20,Withdrawal,Checking
+smallDep,55,Deposit,Savings

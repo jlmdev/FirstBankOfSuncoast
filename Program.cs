@@ -46,16 +46,8 @@ namespace FirstBankOfSuncoast
 
             TextReader reader;
 
-            // if (File.Exists("transactions.csv"))
-            // {
-            // if file exists, Assign a streamreader to read from the file
             reader = new StreamReader("transactions.csv");
-            // }
-            // else
-            // {
-            //     // if the file does not exist, read the data from an empty string instead
-            //     reader = new StringReader("");
-            // }
+
 
             // Creates as stream reader to get information from the file
             var fileReader = new StreamReader("transactions.csv");
@@ -77,44 +69,6 @@ namespace FirstBankOfSuncoast
 
             // Create an object that can write CSV to the filewriter
             var csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
-
-
-            // {
-            //   new Transaction
-            //   {
-            //     Description = "Paycheck",
-            //     Amount = 2538.67,
-            //     Type = "Deposit",
-            //     Account = "Checking",
-            //   },
-            //   new Transaction
-            //   {
-            //     Description = "Savings Deposit",
-            //     Amount = 500.00,
-            //     Type = "Deposit",
-            //     Account = "Savings",
-            //   },
-            //   new Transaction
-            //   {
-            //     Description = "Cable Bill",
-            //     Amount = 175.35,
-            //     Type = "Withdrawal",
-            //     Account = "Checking",
-            //   },
-            //   new Transaction
-            //   {
-            //     Description = "IRA",
-            //     Amount = 250,
-            //     Type = "Withdrawal",
-            //     Account = "Savings",
-            //   },
-            // };
-
-            // Show Transactions
-            // foreach (var transaction in transactions)
-            // {
-            //     Console.WriteLine(transaction.LineItem());
-            // }
 
             // Start while loop to keep running application
             var quitApplication = "n";
@@ -202,9 +156,8 @@ namespace FirstBankOfSuncoast
                                 // Tell the file we are done
                                 fileWriter.Close();
 
-
-
                                 break;
+
                             case "w":
                                 // Checking Withdrawal Process
                                 Console.WriteLine("* Enter a withdrawal *\n");
@@ -251,7 +204,9 @@ namespace FirstBankOfSuncoast
 
                                 // Tell the file we are done
                                 fileWriter.Close();
+
                                 break;
+
                             case "s":
                                 screen = "savingsScreen";
                                 break;
@@ -341,6 +296,7 @@ namespace FirstBankOfSuncoast
                                 fileWriter.Close();
 
                                 break;
+
                             case "w":
                                 // Savings Withdrawal Process
                                 Console.WriteLine("* Enter a withdrawal *\n");
@@ -389,6 +345,7 @@ namespace FirstBankOfSuncoast
                                 fileWriter.Close();
 
                                 break;
+
                             case "c":
                                 screen = "checkingScreen";
                                 break;
@@ -404,30 +361,10 @@ namespace FirstBankOfSuncoast
 
                 }
 
-
-
-                // Create Savings View
-                // Console.Clear();
-                // Console.WriteLine("*** Savings ***\n");
-
-                // var savingsAccount = new List<Transaction>();
-
-                // foreach (var item in GetSavingsTransactions(transactions))
-                // {
-                //     savingsAccount.Add(item);
-                //     Console.WriteLine(item.LineItem());
-                // }
-                // REMOVE ME: while loop test
-                // Console.Write("Do you want to quit?");
-                // quitApplication = Console.ReadLine();
             }
 
             // Say Goodbye
             Console.WriteLine("*** Goodbye ***");
-
-            // PEDAC
-            // TODO: Load or Create File
-
 
 
         }
