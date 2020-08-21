@@ -114,30 +114,31 @@ namespace FirstBankOfSuncoast
                         switch (checkingOptions)
                         {
                             case "d":
-                                // Deposit Process
+                                // Checking Deposit Process
                                 Console.WriteLine("* Enter a deposit *\n");
 
                                 Console.Write("Description: ");
 
-                                var description = Console.ReadLine();
+                                var checkingDepositDescription = Console.ReadLine();
 
                                 Console.Write("Amount: ");
 
-                                var amountString = Console.ReadLine();
-                                var amount = double.Parse(amountString);
+                                var checkingDepositAmountString = Console.ReadLine();
+                                var checkingDepositAmount = double.Parse(checkingDepositAmountString);
 
-                                var type = "Deposit";
-                                var account = "Checking";
+                                var checkingDepositType = "Deposit";
+                                var checkingDepositAccount = "Checking";
 
-                                var deposit = new Transaction()
+                                var checkingAccountDeposit = new Transaction()
                                 {
-                                    Description = description,
-                                    Amount = amount,
-                                    Type = type,
-                                    Account = account,
+                                    Description = checkingDepositDescription,
+                                    Amount = checkingDepositAmount,
+                                    Type = checkingDepositType,
+                                    Account = checkingDepositAccount,
                                 };
 
-                                transactions.Add(deposit);
+                                transactions.Add(checkingAccountDeposit);
+
                                 break;
                             case "w":
                                 // TODO: Prompt for Description
