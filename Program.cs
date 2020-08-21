@@ -141,10 +141,30 @@ namespace FirstBankOfSuncoast
 
                                 break;
                             case "w":
-                                // TODO: Prompt for Description
-                                // TODO: Prompt for Amount
-                                // TODO: Code Type
-                                // TODO: Code Account
+                                // Checking Withdrawal Process
+                                Console.WriteLine("* Enter a withdrawal *\n");
+
+                                Console.Write("Description: ");
+
+                                var checkingWithdrawalDescription = Console.ReadLine();
+
+                                Console.Write("Amount: ");
+
+                                var checkingWithdrawalAmountString = Console.ReadLine();
+                                var checkingWithdrawalAmount = double.Parse(checkingWithdrawalAmountString);
+
+                                var checkingWithdrawalType = "Withdrawal";
+                                var checkingWithdrawalAccount = "Checking";
+
+                                var checkingAccountWithdrawal = new Transaction()
+                                {
+                                    Description = checkingWithdrawalDescription,
+                                    Amount = checkingWithdrawalAmount,
+                                    Type = checkingWithdrawalType,
+                                    Account = checkingWithdrawalAccount,
+                                };
+
+                                transactions.Add(checkingAccountWithdrawal);
                                 break;
                             case "s":
                                 screen = "savingsScreen";
