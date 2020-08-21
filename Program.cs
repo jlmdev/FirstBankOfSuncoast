@@ -282,6 +282,14 @@ namespace FirstBankOfSuncoast
                                 var savingsWithdrawalRawAmount = double.Parse(savingsWithdrawalAmountString);
                                 var savingsWithdrawalPositiveAmount = Math.Abs(savingsWithdrawalRawAmount);
 
+                                // Check for and prevent overdraw
+                                if (savingsWithdrawalPositiveAmount > savingsBalance)
+                                {
+                                    Console.WriteLine("Transaction Cancelled: OVERDRAW");
+                                    savingsWithdrawalDescription = "TRANSACTION CANCELLED";
+                                    savingsWithdrawalPositiveAmount = 0.00;
+                                }
+
                                 var savingsWithdrawalType = "Withdrawal";
                                 var savingsWithdrawalAccount = "Savings";
 
