@@ -46,16 +46,16 @@ namespace FirstBankOfSuncoast
 
             TextReader reader;
 
-            if (File.Exists("transactions.csv"))
-            {
-                // if file exists, Assign a streamreader to read from the file
-                reader = new StreamReader("transactions.csv");
-            }
-            else
-            {
-                // if the file does not exist, read the data from an empty string instead
-                reader = new StringReader("");
-            }
+            // if (File.Exists("transactions.csv"))
+            // {
+            // if file exists, Assign a streamreader to read from the file
+            reader = new StreamReader("transactions.csv");
+            // }
+            // else
+            // {
+            //     // if the file does not exist, read the data from an empty string instead
+            //     reader = new StringReader("");
+            // }
 
             // Creates as stream reader to get information from the file
             var fileReader = new StreamReader("transactions.csv");
@@ -71,6 +71,12 @@ namespace FirstBankOfSuncoast
 
             // Close the reader
             fileReader.Close();
+
+            // Create a stream for writing information into a file
+            var fileWriter = new StreamWriter("transactions.csv");
+
+            // Create an object that can write CSV to the filewriter
+            var csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
 
 
             // {
@@ -185,10 +191,10 @@ namespace FirstBankOfSuncoast
                                 transactions.Add(checkingAccountDeposit);
 
                                 // Create a stream for writing information into a file
-                                var fileWriter = new StreamWriter("transactions.csv");
+                                fileWriter = new StreamWriter("transactions.csv");
 
                                 // Create an object that can write CSV to the filewriter
-                                var csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
+                                csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
 
                                 // Ask our csvWriter to write out our list of numbers
                                 csvWriter.WriteRecords(transactions);
@@ -233,6 +239,18 @@ namespace FirstBankOfSuncoast
                                 };
 
                                 transactions.Add(checkingAccountWithdrawal);
+
+                                // Create a stream for writing information into a file
+                                fileWriter = new StreamWriter("transactions.csv");
+
+                                // Create an object that can write CSV to the filewriter
+                                csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
+
+                                // Ask our csvWriter to write out our list of numbers
+                                csvWriter.WriteRecords(transactions);
+
+                                // Tell the file we are done
+                                fileWriter.Close();
                                 break;
                             case "s":
                                 screen = "savingsScreen";
