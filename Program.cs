@@ -173,8 +173,7 @@ namespace FirstBankOfSuncoast
                                 // Check for and prevent overdraw
                                 if (checkingWithdrawalPositiveAmount > checkingBalance)
                                 {
-                                    Console.WriteLine("Transaction Cancelled: OVERDRAW");
-                                    checkingWithdrawalDescription = "TRANSACTION CANCELLED";
+                                    checkingWithdrawalDescription = "TRANSACTION CANCELLED: OVERDRAW";
                                     checkingWithdrawalPositiveAmount = 0.00;
                                 }
 
@@ -285,8 +284,7 @@ namespace FirstBankOfSuncoast
                                 // Check for and prevent overdraw
                                 if (savingsWithdrawalPositiveAmount > savingsBalance)
                                 {
-                                    Console.WriteLine("Transaction Cancelled: OVERDRAW");
-                                    savingsWithdrawalDescription = "TRANSACTION CANCELLED";
+                                    savingsWithdrawalDescription = "TRANSACTION CANCELLED: OVERDRAW";
                                     savingsWithdrawalPositiveAmount = 0.00;
                                 }
 
