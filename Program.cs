@@ -123,8 +123,10 @@ namespace FirstBankOfSuncoast
 
                                 Console.Write("Amount: ");
 
+                                // Get Checking Deposit Amount and force positive value
                                 var checkingDepositAmountString = Console.ReadLine();
-                                var checkingDepositAmount = double.Parse(checkingDepositAmountString);
+                                var checkingDepositRawAmount = double.Parse(checkingDepositAmountString);
+                                var checkingDepositPositiveAmount = Math.Abs(checkingDepositRawAmount);
 
                                 var checkingDepositType = "Deposit";
                                 var checkingDepositAccount = "Checking";
@@ -132,7 +134,7 @@ namespace FirstBankOfSuncoast
                                 var checkingAccountDeposit = new Transaction()
                                 {
                                     Description = checkingDepositDescription,
-                                    Amount = checkingDepositAmount,
+                                    Amount = checkingDepositPositiveAmount,
                                     Type = checkingDepositType,
                                     Account = checkingDepositAccount,
                                 };
