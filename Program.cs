@@ -202,10 +202,30 @@ namespace FirstBankOfSuncoast
                         switch (savingsOptions)
                         {
                             case "d":
-                                // TODO: Prompt for Description
-                                // TODO: Prompt for Amount
-                                // TODO: Code Type
-                                // TODO: Code Account
+                                // Savings Deposit Process
+                                Console.WriteLine("* Enter a deposit *\n");
+
+                                Console.Write("Description: ");
+
+                                var savingsDepositDescription = Console.ReadLine();
+
+                                Console.Write("Amount: ");
+
+                                var savingsDepositAmountString = Console.ReadLine();
+                                var savingsDepositAmount = double.Parse(savingsDepositAmountString);
+
+                                var savingsDepositType = "Deposit";
+                                var savingsDepositAccount = "Savings";
+
+                                var savingsAccountDeposit = new Transaction()
+                                {
+                                    Description = savingsDepositDescription,
+                                    Amount = savingsDepositAmount,
+                                    Type = savingsDepositType,
+                                    Account = savingsDepositAccount,
+                                };
+
+                                transactions.Add(savingsAccountDeposit);
                                 break;
                             case "w":
                                 // TODO: Prompt for Description
