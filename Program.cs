@@ -113,7 +113,7 @@ namespace FirstBankOfSuncoast
                                 checkingBalance -= item.Amount;
                             }
                         }
-                        Console.WriteLine($"** Checking Balance: ${checkingBalance}");
+                        Console.WriteLine($"** Checking Balance: ${checkingBalance} **");
 
                         // Prompt for action
                         Console.WriteLine("What would you like to do?");
@@ -199,13 +199,26 @@ namespace FirstBankOfSuncoast
                         Console.Clear();
                         Console.WriteLine("*** Savings ***\n");
 
+                        // List savings transactions and calculate balance
                         var savingsAccount = new List<Transaction>();
+                        var savingsBalance = 0.00;
 
                         foreach (var item in GetSavingsTransactions(transactions))
                         {
                             savingsAccount.Add(item);
                             Console.WriteLine(item.LineItem());
+
+                            // Track Savings Account Balance
+                            if (item.Type == "Deposit")
+                            {
+                                savingsBalance += item.Amount;
+                            }
+                            else
+                            {
+                                savingsBalance -= item.Amount;
+                            }
                         }
+                        Console.WriteLine($"** Savings Balance: ${savingsBalance} **");
 
                         // Prompt for action
                         Console.WriteLine("What would you like to do?");
