@@ -114,10 +114,30 @@ namespace FirstBankOfSuncoast
                         switch (checkingOptions)
                         {
                             case "d":
-                                // TODO: Prompt for Description
-                                // TODO: Prompt for Amount
-                                // TODO: Code Type
-                                // TODO: Code Account
+                                // Deposit Process
+                                Console.WriteLine("* Enter a deposit *\n");
+
+                                Console.Write("Description: ");
+
+                                var description = Console.ReadLine();
+
+                                Console.Write("Amount: ");
+
+                                var amountString = Console.ReadLine();
+                                var amount = double.Parse(amountString);
+
+                                var type = "Deposit";
+                                var account = "Checking";
+
+                                var deposit = new Transaction()
+                                {
+                                    Description = description,
+                                    Amount = amount,
+                                    Type = type,
+                                    Account = account,
+                                };
+
+                                transactions.Add(deposit);
                                 break;
                             case "w":
                                 // TODO: Prompt for Description
