@@ -170,6 +170,14 @@ namespace FirstBankOfSuncoast
                                 var checkingWithdrawalRawAmount = double.Parse(checkingWithdrawalAmountString);
                                 var checkingWithdrawalPositiveAmount = Math.Abs(checkingWithdrawalRawAmount);
 
+                                // Check for and prevent overdraw
+                                if (checkingWithdrawalPositiveAmount > checkingBalance)
+                                {
+                                    Console.WriteLine("Transaction Cancelled: OVERDRAW");
+                                    checkingWithdrawalDescription = "TRANSACTION CANCELLED";
+                                    checkingWithdrawalPositiveAmount = 0.00;
+                                }
+
                                 var checkingWithdrawalType = "Withdrawal";
                                 var checkingWithdrawalAccount = "Checking";
 
