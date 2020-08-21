@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
+using CsvHelper;
+using System.Globalization;
 
 namespace FirstBankOfSuncoast
 {
@@ -40,39 +43,66 @@ namespace FirstBankOfSuncoast
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the First Bank of Suncoast");
-            // TODO: Test Transactions
 
-            var transactions = new List<Transaction>()
+            TextReader reader;
+
+            if (File.Exists("transactions.csv"))
             {
-              new Transaction
-              {
-                Description = "Paycheck",
-                Amount = 2538.67,
-                Type = "Deposit",
-                Account = "Checking",
-              },
-              new Transaction
-              {
-                Description = "Savings Deposit",
-                Amount = 500.00,
-                Type = "Deposit",
-                Account = "Savings",
-              },
-              new Transaction
-              {
-                Description = "Cable Bill",
-                Amount = 175.35,
-                Type = "Withdrawal",
-                Account = "Checking",
-              },
-              new Transaction
-              {
-                Description = "IRA",
-                Amount = 250,
-                Type = "Withdrawal",
-                Account = "Savings",
-              },
-            };
+                // if file exists, Assign a streamreader to read from the file
+                reader = new StreamReader("transactions.csv");
+            }
+            else
+            {
+                // if the file does not exist, read the data from an empty string instead
+                reader = new StringReader("");
+            }
+
+            // Creates as stream reader to get information from the file
+            var fileReader = new StreamReader("transactions.csv");
+
+            // Create a CSV reader to parse the stream into CSV format
+            var csvReader = new CsvReader(fileReader, CultureInfo.InvariantCulture);
+
+            // Tell the CSV reader not to interpret the first row as a header
+            csvReader.Configuration.HasHeaderRecord = false;
+
+            // Get the records from the CSV reader
+            var transactions = csvReader.GetRecords<Transaction>().ToList();
+
+            // Close the reader
+            fileReader.Close();
+
+
+            // {
+            //   new Transaction
+            //   {
+            //     Description = "Paycheck",
+            //     Amount = 2538.67,
+            //     Type = "Deposit",
+            //     Account = "Checking",
+            //   },
+            //   new Transaction
+            //   {
+            //     Description = "Savings Deposit",
+            //     Amount = 500.00,
+            //     Type = "Deposit",
+            //     Account = "Savings",
+            //   },
+            //   new Transaction
+            //   {
+            //     Description = "Cable Bill",
+            //     Amount = 175.35,
+            //     Type = "Withdrawal",
+            //     Account = "Checking",
+            //   },
+            //   new Transaction
+            //   {
+            //     Description = "IRA",
+            //     Amount = 250,
+            //     Type = "Withdrawal",
+            //     Account = "Savings",
+            //   },
+            // };
 
             // Show Transactions
             // foreach (var transaction in transactions)
