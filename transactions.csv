@@ -3,3 +3,6 @@ Paycheck,3000,Deposit,Checking
 Bribes Taken,450,Deposit,Checking
 Woohoo,20,Deposit,Checking
 Oh No,200,Withdrawal,Checking
+Lottery,500,Deposit,Savings
+TRANSACTION CANCELLED: OVERDRAW,0,Withdrawal,Savings
+smallWithdraw,100,Withdrawal,Savings

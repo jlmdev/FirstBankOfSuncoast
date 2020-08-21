@@ -327,6 +327,19 @@ namespace FirstBankOfSuncoast
                                 };
 
                                 transactions.Add(savingsAccountDeposit);
+
+                                // Create a stream for writing information into a file
+                                fileWriter = new StreamWriter("transactions.csv");
+
+                                // Create an object that can write CSV to the filewriter
+                                csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
+
+                                // Ask our csvWriter to write out our list of numbers
+                                csvWriter.WriteRecords(transactions);
+
+                                // Tell the file we are done
+                                fileWriter.Close();
+
                                 break;
                             case "w":
                                 // Savings Withdrawal Process
@@ -362,6 +375,19 @@ namespace FirstBankOfSuncoast
                                 };
 
                                 transactions.Add(savingsAccountWithdrawal);
+
+                                // Create a stream for writing information into a file
+                                fileWriter = new StreamWriter("transactions.csv");
+
+                                // Create an object that can write CSV to the filewriter
+                                csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
+
+                                // Ask our csvWriter to write out our list of numbers
+                                csvWriter.WriteRecords(transactions);
+
+                                // Tell the file we are done
+                                fileWriter.Close();
+
                                 break;
                             case "c":
                                 screen = "checkingScreen";
