@@ -9,3 +9,9 @@ smallWithdraw,100,Withdrawal,Savings
 smallDep,50,Deposit,Checking
 smallw,20,Withdrawal,Checking
 smallDep,55,Deposit,Savings
+money in,800,Deposit,Checking
+money out,400,Withdrawal,Checking
+dollar in,1,Deposit,Savings
+dollar out,1,Withdrawal,Savings
+dollar in,1,Deposit,Checking
+dollar out,1,Withdrawal,Checking

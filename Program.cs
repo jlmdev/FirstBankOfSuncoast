@@ -40,6 +40,21 @@ namespace FirstBankOfSuncoast
             var savingsTransactions = transactions.Where(transaction => transaction.Account == "Savings");
             return savingsTransactions;
         }
+
+        public static void WriteToFile(List<Transaction> transactions)
+        {
+            // Create a stream for writing information into a file
+            var fileWriter = new StreamWriter("transactions.csv");
+
+            // Create an object that can write CSV to the filewriter
+            var csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
+
+            // Ask our csvWriter to write out our list of numbers
+            csvWriter.WriteRecords(transactions);
+
+            // Tell the file we are done
+            fileWriter.Close();
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the First Bank of Suncoast");
@@ -144,17 +159,7 @@ namespace FirstBankOfSuncoast
 
                                 transactions.Add(checkingAccountDeposit);
 
-                                // Create a stream for writing information into a file
-                                fileWriter = new StreamWriter("transactions.csv");
-
-                                // Create an object that can write CSV to the filewriter
-                                csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
-
-                                // Ask our csvWriter to write out our list of numbers
-                                csvWriter.WriteRecords(transactions);
-
-                                // Tell the file we are done
-                                fileWriter.Close();
+                                WriteToFile(transactions);
 
                                 break;
 
@@ -193,17 +198,7 @@ namespace FirstBankOfSuncoast
 
                                 transactions.Add(checkingAccountWithdrawal);
 
-                                // Create a stream for writing information into a file
-                                fileWriter = new StreamWriter("transactions.csv");
-
-                                // Create an object that can write CSV to the filewriter
-                                csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
-
-                                // Ask our csvWriter to write out our list of numbers
-                                csvWriter.WriteRecords(transactions);
-
-                                // Tell the file we are done
-                                fileWriter.Close();
+                                WriteToFile(transactions);
 
                                 break;
 
@@ -283,17 +278,7 @@ namespace FirstBankOfSuncoast
 
                                 transactions.Add(savingsAccountDeposit);
 
-                                // Create a stream for writing information into a file
-                                fileWriter = new StreamWriter("transactions.csv");
-
-                                // Create an object that can write CSV to the filewriter
-                                csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
-
-                                // Ask our csvWriter to write out our list of numbers
-                                csvWriter.WriteRecords(transactions);
-
-                                // Tell the file we are done
-                                fileWriter.Close();
+                                WriteToFile(transactions);
 
                                 break;
 
@@ -332,17 +317,7 @@ namespace FirstBankOfSuncoast
 
                                 transactions.Add(savingsAccountWithdrawal);
 
-                                // Create a stream for writing information into a file
-                                fileWriter = new StreamWriter("transactions.csv");
-
-                                // Create an object that can write CSV to the filewriter
-                                csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
-
-                                // Ask our csvWriter to write out our list of numbers
-                                csvWriter.WriteRecords(transactions);
-
-                                // Tell the file we are done
-                                fileWriter.Close();
+                                WriteToFile(transactions);
 
                                 break;
 
